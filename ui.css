@@ -1,0 +1,126 @@
+    body{        
+        background-color: #fde7f9;
+        background-image: linear-gradient(315deg, #fde7f9 0%,#aacaef 74%);
+        min-height: 90vh;
+        min-width:100vw;
+        align-items: center;
+    }
+
+    ::placeholder {
+        color: white !important;
+        opacity: 1;
+    }
+      
+    
+    .mainmid{
+        margin-top:10vh;
+        margin-bottom: 10vh;
+        background: rgba( 143, 139, 139, 0.25 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 7.5px );
+        -webkit-backdrop-filter: blur( 7.5px );
+        border-radius: 10px;
+        border: 1px solid rgba( 255, 255, 255, 0.18 );
+        color:white;
+        min-height:80vh;
+        padding:30px;
+        display:flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+     }
+
+
+     input[type=text]:focus, textarea:focus {
+        box-shadow: 0 0 0px ;
+        padding: 3px 0px 3px 3px;
+        margin: 5px 1px 3px 0px;
+      }
+
+
+
+    .nav{
+        display: flex;
+        flex-direction:row;
+        justify-content:space-between;
+        margin:2rem 2rem 2rem 2rem;
+        align-items:center;
+      }
+      
+      .input-loc{
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        justify-content:space-between;
+      }
+      h5{
+          align-items:center;
+      }
+      
+      .form-control{
+        min-height:20px;
+        border:0 !important;
+        max-width:10vw;
+        border-radius:0rem !important;
+        border-bottom:2px solid white !important;
+        padding-bottom:0px !important;
+        color:white !important;
+      }
+
+      
+      .main-container{
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        justify-content:center;
+        padding:2vh;
+        margin:2vh;
+        padding:4rem;
+        margin:1rem;
+      }
+      
+
+    
+      .temprature{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center; 
+        border-radius:25%;
+        margin:10px;
+        padding:30px;
+      }
+
+      .tempval{
+          font-weight:400;
+          font-size: 5rem;
+      }
+      
+      .content{
+        display:flex;
+        flex-direction:row;
+        justify-content:center;
+        align-items:center;
+      }
+      
+      .temp-sign{
+        border-radius:25%;
+            /* margin:20px; */
+        /* padding:40px 10px 40px 10px; */
+        min-height:20vh;
+        max-height:24vh;
+        width:auto;
+      }
+      
+      .more-info{
+        display:flex;
+        justify-content:space-around;
+        align-items:center;
+          
+      }
+
+      .info-row{
+          display:flex;
+          flex-direction:row;
+          justify-content: space-evenly;
+      }
