@@ -1,6 +1,22 @@
-    body{        
-        background-color: #fde7f9;
-        background-image: linear-gradient(315deg, #fde7f9 0%,#aacaef 74%);
+    
+    @media screen and (max-width: 1000px) {
+      .more-info {
+          display: none !important;
+      }
+      .mainmid{
+        justify-content: space-around !important;
+
+      }
+    }
+   
+   
+   
+   
+   body{        
+        background: #F7F7F7;
+        background: -webkit-radial-gradient(center, #F7F7F7, #D5D5D5);
+        background: -moz-radial-gradient(center, #F7F7F7, #D5D5D5);
+        background: radial-gradient(ellipse at center, #F7F7F7, #D5D5D5);
         min-height: 90vh;
         min-width:100vw;
         align-items: center;
@@ -11,7 +27,8 @@
         opacity: 1;
     }
       
-    
+
+
     .mainmid{
         margin-top:10vh;
         margin-bottom: 10vh;
@@ -27,8 +44,13 @@
         display:flex;
         flex-direction: column;
         justify-content: space-between;
-        
+        object-fit: cover;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
      }
+
+
 
 
      input[type=text]:focus, textarea:focus {
@@ -93,7 +115,7 @@
 
       .tempval{
           font-weight:400;
-          font-size: 5rem;
+          font-size: 8rem;
       }
       
       .content{

@@ -32,35 +32,30 @@
                 <div class="temprature">
                    <p id="temp" class="tempval">25 </p>
                    <p class="location" id="summary">Summary</p>
-                   <!-- <h5  style="font-weight:450; font-size:1.1rem;color:white;"id="date"> Date </h5> -->
-                   <!-- <h5 id="time"style="font-weight:450; font-size:1.1rem;color:white;"> Time </h5> -->
                     </div>
-                <div class="content">
-                   <img src="Images\cloud-2.svg" class="temp-sign" alt="temp-sign-chnage"/>
-                </div>
             </div>
             
             
             <div class="more-info">
                 <div class="info-row">
                    <h6  style="font-weight: 400;padding-right:15px;">Winds</h6>
-                   <h6  style="font-weight: 400;" id="location">13</h6>
+                   <h6  style="font-weight: 400;" id="winds">13</h6>
                 </div>
                 <div class="info-row">
                     <h6  style="font-weight: 400;padding-right:15px;">Humidity</h6>
-                   <h6  style="font-weight: 400;" id="temp">13</h6>
+                   <h6  style="font-weight: 400;" id="humidity">13</h6>
                 </div>
                 <div class="info-row">
-                    <h6  style="font-weight: 400;padding-right:15px;">Rain</h6>
-                   <h6  style="font-weight: 400;" id="summary">13</h6>
+                    <h6  style="font-weight: 400;padding-right:15px;">Feels Like </h6>
+                   <h6  style="font-weight: 400;" id="feels_like">13</h6>
                 </div>
                 <div class="info-row">
                     <h6  style="font-weight: 400;padding-right:15px;">Max-Temp</h6>
-                   <h6  style="font-weight: 400;" >13</h6>
+                   <h6  style="font-weight: 400;" id="temp_min">13</h6>
                 </div>
                 <div class="info-row">
                     <h6  style="font-weight: 400;padding-right:15px;">Min-temp</h6>
-                   <h6  style="font-weight: 400;" >13</h6>
+                   <h6  style="font-weight: 400;" id="temp_max">13</h6>
                 </div>
             </div>
         
@@ -74,36 +69,48 @@
             let temperature = document.querySelector("#temp");
             let summary = document.querySelector("#summary");
             let loc = document.querySelector("#location");
-            let icon = document.querySelector("#icon");
-            // let date=document.querySelector("#date");
-            // let time=document.querySelector("#time");
+            let winds = document.querySelector("#winds");
+            let humidity = document.querySelector("#humidity");
+            let feels_like = document.querySelector("#feels_like");
+            let temp_min = document.querySelector("#temp_min");
+            let temp_max = document.querySelector("#temp_max");
             const kelvin = 273;
             let city="london";
             
 
             window.addEventListener("load", () => {
+
+                let mainmid=document.querySelector('.mainmid');
+                // mainmid.style.backgroundImage = 'url(./images/cloud1.jpg)';
+
+
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition((position) => {
                     console.log(position);
                     lon = position.coords.longitude;
                     lat = position.coords.latitude;
-                    
-                    //calculating the date 
-                    // var today = new Date();
-                    // var dateCal = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-                    // var hours = today.getHours()>9?today.getHours() : "0"+today.getHours();
-                    // var minutes=today.getMinutes()>9?today.getMinutes():"0"+today.getMinutes();
-                    // var timeCal=hours+":"+minutes;
 
-                    // date.textContent =dateCal;
-                    // time.textContent=timeCal;
-                    
-                
+                    //Time
+                    const hours = new Date().getHours()
+                    console.log("hhhwhw   :- " + hours);
+                    if(hours>20 && hours<24 || hours>=0 && hours <5){
+                        mainmid.style.backgroundImage = 'url(./images/night.jpg)';
+
+                    }else if (hours>4 && hours<10) {
+                        mainmid.style.backgroundImage = 'url(./images/morning.jpg)';
+
+                    }else if (hours>9 && hours<16){
+                        mainmid.style.backgroundImage = 'url(./images/noon.jpg)';
+
+                    }else if (hours>15 && hours<21){
+                        mainmid.style.backgroundImage = 'url(./images/evening.jpg)';
+
+                    }
                     // API ID
                     const api = "6d055e39ee237af35ca066f35474e9df";
                 
                     // API URL
-                    const base = `https://weather-basic-dashboard.netlify.app/api.openweathermap.org/data/2.5/weather?lat=${lat}&` +`lon=${lon}&appid=6d055e39ee237af35ca066f35474e9df`;
+                    const base = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&` +`lon=${lon}&appid=6d055e39ee237af35ca066f35474e9df`;
                 
                       // Calling the API
                       fetch(base)
@@ -112,13 +119,14 @@
                         })
                         .then((data) => {
                         console.log(data);
-                        temperature.textContent =
-                            Math.floor(data.main.temp - kelvin) + "°C";
+                        temperature.textContent =Math.floor(data.main.temp - kelvin) + "°C";
                         summary.textContent = data.weather[0].description;
                         loc.textContent = data.name + "," + data.sys.country;
-                        // let icon1 = data.weather[0].icon;
-                        // icon.innerHTML =
-                        //     `<img src="images/cloud.svg" style= 'height:10rem'/>`;
+                        winds.textContent=data.wind.speed + "mph";
+                        humidity.textContent=data.main.humidity+"%";
+                        feels_like.textContent=Math.floor(data.main.feels_like -kelvin) + "°C";
+                        temp_max.textContent=Math.floor(data.main.temp_max-kelvin) + "°C";
+                        temp_min.textContent=Math.floor(data.main.temp_min -kelvin) + "°C";
                         });
                     });
                 }
@@ -134,7 +142,9 @@
                 const api = "6d055e39ee237af35ca066f35474e9df";
 
                 // API URL
-                const base =`https://weather-basic-dashboard.netlify.app/api.openweathermap.org/data/2.5/weather?q=${locationCity}&appid=6d055e39ee237af35ca066f35474e9df`;
+                const base =`https://api.openweathermap.org/data/2.5/weather?q=${locationCity}&appid=6d055e39ee237af35ca066f35474e9df`;
+
+
 
                 // Calling the API
                 fetch(base)
@@ -146,14 +156,15 @@
                         alert("Location not in our database");
                         }
                     }).then((data) => {
-                    console.log(data);
-                    temperature.textContent =
-                        Math.floor(data.main.temp - kelvin) + "°C";
-                    summary.textContent = data.weather[0].description;
-                    loc.textContent = data.name + "," + data.sys.country;
-                    // let icon1 = data.weather[0].icon;
-                    // icon.innerHTML =
-                    //     `<img src="images/cloud.svg" style= 'height:10rem'/>`;
+                        console.log(data);
+                        temperature.textContent =Math.floor(data.main.temp - kelvin) + "°C";
+                        summary.textContent = data.weather[0].description;
+                        loc.textContent = data.name + "," + data.sys.country;
+                        winds.textContent=data.wind.speed + "mph";
+                        humidity.textContent=data.main.humidity+"%";
+                        feels_like.textContent=Math.floor(data.main.feels_like -kelvin) + "°C";
+                        temp_max.textContent=Math.floor(data.main.temp_max-kelvin) + "°C";
+                        temp_min.textContent=Math.floor(data.main.temp_min -kelvin) + "°C";
                     });
             };
 
