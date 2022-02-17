@@ -5,8 +5,12 @@
       }
       .mainmid{
         justify-content: space-around !important;
-
+        margin:0px !important;
+        padding:0px !important;
+        min-height: 100vh !important;
       }
+
+      
     }
    
    
@@ -48,7 +52,6 @@
         background-size: cover;
         background-repeat: no-repeat;
         background-position: 50% 50%;
-        background-image: url('./Images/morning.jpg');
      }
 
 
