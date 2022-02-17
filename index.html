@@ -94,16 +94,16 @@
                     const hours = new Date().getHours()
                     console.log("hhhwhw   :- " + hours);
                     if(hours>20 && hours<24 || hours>=0 && hours <5){
-                        mainmid.style.backgroundImage = 'url("./images/night.jpg")';
+                        mainmid.style.backgroundImage = "url(images/night.jpg)";
 
                     }else if (hours>4 && hours<10) {
-                        mainmid.style.backgroundImage = 'url("./images/morning.jpg")';
+                        mainmid.style.backgroundImage = "url(images/morning.jpg)";
 
                     }else if (hours>9 && hours<16){
-                        mainmid.style.backgroundImage = 'url("./images/noon.jpg")';
+                        mainmid.style.backgroundImage = "url(images/noon.jpg)";
 
                     }else if (hours>15 && hours<21){
-                        mainmid.style.backgroundImage = 'url("./images/evening.jpg")';
+                        mainmid.style.backgroundImage = "url(images/evening.jpg)";
 
                     }
                     // API ID
@@ -145,24 +145,7 @@
                 const base =`https://api.openweathermap.org/data/2.5/weather?q=${locationCity}&appid=6d055e39ee237af35ca066f35474e9df`;
 
 
-                //Time
-                const hours = new Date().getHours()
-                console.log("hhhwhw   :- " + hours);
-                if(hours>20 && hours<24 || hours>=0 && hours <5){
-                    mainmid.style.backgroundImage = 'url("./images/night.jpg")';
 
-                }else if (hours>4 && hours<10) {
-                    mainmid.style.backgroundImage = 'url("./images/morning.jpg")';
-
-                }else if (hours>9 && hours<16){
-                    mainmid.style.backgroundImage = 'url("./images/noon.jpg")';
-
-                }else if (hours>15 && hours<21){
-                    mainmid.style.backgroundImage = 'url("./images/evening.jpg")';
-
-                }
-
-                
                 // Calling the API
                 fetch(base)
                     .then((response) => {
